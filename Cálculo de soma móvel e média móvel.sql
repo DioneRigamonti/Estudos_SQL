@@ -1,5 +1,5 @@
--- FunÁıes de Janela
--- C·lculo de soma mÛvel e mÈdia mÛvel
+-- Fun√ß√µes de Janela
+-- C√°lculo de soma m√≥vel e m√©dia m√≥vel
 
 CREATE TABLE Resultado(
 Data_Fechamento DATETIME,
@@ -24,35 +24,21 @@ VALUES
 SELECT * FROM Resultado
 
 
--- Soma mÛvel
+-- Soma m√≥vel
 
 SELECT
 	Data_Fechamento AS 'Data do Fechamento',
-	Faturamento_MM AS 'Faturamento Total (em milhıes)',
-	SUM(Faturamento_MM) OVER(ORDER BY Data_Fechamento ROWS BETWEEN 1 PRECEDING AND CURRENT ROW) AS 'Fat. Acumulado (em milhıes)'
+	Faturamento_MM AS 'Faturamento Total (em milh√µes)',
+	SUM(Faturamento_MM) OVER(ORDER BY Data_Fechamento ROWS BETWEEN 1 PRECEDING AND CURRENT ROW) AS 'Fat. Acumulado (em milh√µes)'
 FROM Resultado
 ORDER BY [Data do Fechamento]
 
 
--- MÈdia mÛvel
+-- M√©dia m√≥vel se quiser pegar todas as linhas anteriores utilizar ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
 
 SELECT
 	Data_Fechamento AS 'Data do Fechamento',
-	Faturamento_MM AS 'Faturamento Total (em milhıes)',
-	AVG(Faturamento_MM) OVER(ORDER BY Data_Fechamento ROWS BETWEEN 1 PRECEDING AND CURRENT ROW) AS 'Fat. Acumulado (em milhıes)'
+	Faturamento_MM AS 'Faturamento Total (em milh√µes)',
+	AVG(Faturamento_MM) OVER(ORDER BY Data_Fechamento ROWS BETWEEN 1 PRECEDING AND CURRENT ROW) AS 'Fat. Acumulado (em milh√µes)'
 FROM Resultado
 ORDER BY [Data do Fechamento]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
